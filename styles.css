@@ -6,13 +6,16 @@
 }
 
 #background {
+  background-size: fill;
+  background-repeat: no-repeat;
+  width: 1280px;
   height: 720px;
 }
 
 #current-weather {
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(7, 50px);
+  grid-template-columns: repeat(7, 70px);
   row-gap: 15px;
   column-gap: 10px;
 }
@@ -25,10 +28,20 @@
   grid-area: 1 / 1 / 2 / 8;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#search-input {
+  height: 24px;
+}
+
+#get-data {
+  font-size: 16px;
+  padding: 2px 5px;
 }
 
 #search[data-theme="dark"] ~ * {
-  color: #fff;
+  color: beige;
 }
 
 #search input {
@@ -47,7 +60,7 @@
 }
 
 #temp {
-  grid-area: 3 / 1 / 4 / 4;
+  grid-area: 3 / 1 / 4 / 8;
   display: flex;
   align-items: center;
   justify-content: center;
