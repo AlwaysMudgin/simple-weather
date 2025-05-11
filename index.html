@@ -8,44 +8,119 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="background">
-      <div id="current-weather">
-        <div id="search">
-          <form id="city-search">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="City name..."
-              required
-            />
-            <button type="submit" id="get-data" form="city-search">
-              Get Weather
-            </button>
-            <p id="search-error"></p>
-          </form>
-        </div>
-        <p id="city-name"></p>
-        <div id="temp">
-          <p id="current-temp"></p>
-        </div>
-        <div id="current-conditions">
-          <img id="current-conditions-icon" src="" />
-        </div>
-        <div id="high-low">
-          <div id="high">
-            <p>High</p>
-            <p id="high-today"></p>
+    <div id="page-wrap">
+      <header>
+        <h1 id="logo"><span class="brig">BRIG</span>HTSK<span class="brig">Y</span></h2>
+        <form action="" id="search">
+          <div class="input-wrap">
+            <input type="text" id="city-input" placeholder="Enter city..." required />
           </div>
-          <div id="low">
-            <p>Low</p>
-            <p id="low-today"></p>
+          <button id="search-btn" type="submit">Search</button>
+        </form>
+      </header>
+      <main>
+        <section id="today">
+          <div class="div-header" id="city-name"></div>
+          <div id="today-content">
+            <p id="current"><span id="current-temp"></span><span class="degree">&deg;</span></p>
+            <div class="high-low">
+              <p class="high"><span id="high-today"></span><span class="degree">&deg;</span></p>
+              <div class="line-divide"></div>
+              <p class="low"><span id="low-today"></span><span class="degree">&deg;</span></p>
+            </div>
+            <div id="sunrise">
+              <img src="sunrise-alt.svg" alt="sunrise">
+              <p id="sunrise-time"></p>
+            </div>
+            <div id="sunset">
+              <img src="sunset.svg" alt="sunset">
+              <p id="sunset-time"></p>
+            </div>
           </div>
-        </div>
-        <div id="rise-set">
-          <p id="sunrise-today"></p>
-          <p id="sunset-today"></p>
-        </div>
-      </div>
+        </section>
+        <section id="seven-day">
+          <div class="div-header">This Week</div>
+          <div id="seven-day-container">
+            <div class="day one">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day two">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day three">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day four">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day five">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day six">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+            <div class="day seven">
+              <p class="weekday"></p>
+              <div class="high-low">
+                <p class="high"><span class="high-temp"></span><span class="degree">&deg;</span></p>
+                <div class="line-divide"></div>
+                <p class="low"><span class="low-temp"></span><span class="degree">&deg;</span></p>
+              </div>
+              <div class="day-icon">
+                <img src="">
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>

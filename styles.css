@@ -5,104 +5,190 @@
   font-family: sans-serif;
 }
 
-#background {
-  background-size: fill;
-  background-repeat: no-repeat;
-  width: 1280px;
-  height: 720px;
+header {
+  background: rgb(91, 91, 105);
+  color: rgb(243, 243, 243);
+  padding: 16px;
+  min-width: 460px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.24);
 }
 
-#current-weather {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(7, 70px);
-  row-gap: 15px;
-  column-gap: 10px;
+header > * {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-#current-weather * {
-  background-color: transparent;
+#logo {
+  margin-right: 10px;
+  font-size: 2rem;
+  font-weight: 1;
 }
 
-#search {
-  grid-area: 1 / 1 / 2 / 8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.brig {
+  font-weight: 800;
+  color: rgb(255, 236, 29);
 }
 
-#search-input {
-  height: 24px;
+form > * {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-#get-data {
-  font-size: 16px;
-  padding: 2px 5px;
+#city-input {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.24);
+  border: none;
+  padding: 2px 6px;
+  font-size: 1rem;
 }
 
-#search[data-theme="dark"] ~ * {
-  color: beige;
+#search-btn {
+  background-color: rgb(255, 236, 29);
+  padding: 2px 6px;
+  border: none;
+  border-radius: 3px;
+  margin-left: 8px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.24);
+  font-size: 1rem;
+  color: rgb(91, 91, 105);
 }
 
-#search input {
-  background-color: #fff;
+#search-btn:hover {
+  cursor: pointer;
+  background-color: rgb(230, 211, 0);
 }
 
-#search button {
-  background-color: lightgray;
+main {
+  background-color: rgb(246, 246, 246);
 }
 
-#city-name {
-  grid-area: 2 / 1 / 3 / 8;
-  font-size: 50px;
-  font-weight: bold;
+section {
+  padding: 32px;
+  min-width: 320px;
+}
+
+#today {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.24);
+  background-size: cover;
+  min-width: 460px;
+}
+
+.left {
+  width: max-content;
+  margin-right: auto;
+}
+
+.div-header {
+  padding: 4px 16px 4px 40px;
+  width: fit-content;
+  background-color: rgb(255, 236, 29);
+  color: rgb(91, 91, 105);
+  font-size: 1.3rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.24);
+  margin-bottom: 24px;
+  margin-left: -32px;
+}
+
+#today-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  width: max-content;
+}
+
+#today-content > * {
+  display: inline-block;
+}
+
+#temps {
+  display: inline-block;
+  width: fit-content;
+}
+
+#current {
+  font-size: 4rem;
+  margin-right: 4px;
+  color: rgb(239, 239, 239);
+}
+
+.degree {
+  position: relative;
+  top: -0.4em;
+  font-size: 0.75em;
+}
+
+.high-low {
+  position: relative;
+  top: 4px;
+  font-size: 1.5em;
+  font-weight: 500;
+  width: min-content;
+}
+
+.line-divide {
+  width: 2ch;
+  height: 1px;
+  margin: 8px auto;
+  background: rgb(239, 239, 239);
+}
+
+.high {
+  color: rgb(255, 50, 50);
+}
+
+.low {
+  color: rgb(0, 148, 253);
+}
+
+.right {
+  margin-left: auto;
+}
+
+#today img {
+  height: 1.5rem;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sunrise,
+#sunset {
+  display: inline-block;
+  padding: 12px;
   text-align: center;
+  color: rgb(239, 239, 239);
 }
 
-#temp {
-  grid-area: 3 / 1 / 4 / 8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#seven-day {
+  background-image: url("radar.jpg");
+  background-size: cover;
+  min-width: 460px;
 }
 
-#current-temp {
-  font-size: 50px;
+#seven-day-container > * {
+  display: inline-block;
+  font-size: 0.75rem;
+  margin: 8px;
+}
+
+.day {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.day > div {
+  display: inline-block;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.day-icon img {
+  width: 30px;
+}
+
+.weekday {
   text-align: center;
-}
-
-#current-conditions {
-  grid-area: 3 / 5 / 4 / 8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#current-conditions-icon {
-  height: 90px;
-  width: 90px;
-}
-
-#high-low {
-  grid-area: 4 / 1 / 5 / 4;
-  font-size: 20px;
-  display: flex;
-  text-align: center;
-}
-
-#high,
-#low {
-  width: 50%;
-}
-
-#rise-set {
-  grid-area: 4 / 5 / 5 / 8;
-  display: flex;
-  font-size: 20px;
-  text-align: center;
-}
-
-#search {
-  display: grid;
-  background-color: transparent;
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
 }

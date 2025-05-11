@@ -9,10 +9,9 @@ const apiRequestBaseUrl =
 // location = address, partial address, lat/long, zip code
 // date format = yyyy-mm-dd
 
-const searchForm = document.getElementById("city-search");
-const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("get-data");
-const currWeatherDiv = document.getElementById("current-weather");
+const searchForm = document.getElementById("search");
+const searchInput = document.getElementById("city-input");
+const searchButton = document.getElementById("search-btn");
 
 let city = "Sarasota";
 async function getWeather() {
@@ -30,42 +29,46 @@ async function getWeather() {
 
 const cityDisplay = document.getElementById("city-name");
 const currentTempDisplay = document.getElementById("current-temp");
-const currentConditionsIcon = document.getElementById(
-  "current-conditions-icon"
-);
-const highTodayDisplay = document.getElementById("high-today");
-const lowTodayDisplay = document.getElementById("low-today");
-const sunriseTodayDisplay = document.getElementById("sunrise-today");
-const sunsetTodayDisplay = document.getElementById("sunset-today");
-const searchErrorDisplay = document.getElementById("search-error");
-const background = document.getElementById("background");
+const currentHighDisplay = document.getElementById("high-today");
+const currentLowDisplay = document.getElementById("low-today");
+const sunriseDisplay = document.getElementById("sunrise-time");
+const sunsetDisplay = document.getElementById("sunset-time");
+const backgroundElement = document.getElementById("today");
+
+const dayDisplays = document.querySelectorAll(".day");
+console.log(dayDisplays);
 
 async function showWeather() {
   const weather = await getWeather();
   cityDisplay.innerText = weather.address;
-  currentTempDisplay.innerText =
-    `${weather.currentConditions.temp}` + "\u00B0" + "F";
-  const icon = weather.currentConditions.icon;
-  const iconSVG = icon + ".svg";
-  const backgroundJpg = icon + ".jpg";
-  currentConditionsIcon.src = iconSVG;
-  background.style.backgroundImage = `url("${backgroundJpg}")`;
-  if (
-    icon == "clear-night" ||
-    icon == "partly-cloudy-night" ||
-    icon == "rain"
-  ) {
-    document.querySelector("#search").setAttribute("data-theme", "dark");
-  } else {
-    document.querySelector("#search").setAttribute("data-theme", "");
+  currentTempDisplay.innerText = Math.round(weather.currentConditions.temp);
+  const backgroundJpg = weather.currentConditions.icon + ".jpg";
+  console.log(weather.currentConditions.icon);
+  console.log(backgroundJpg);
+  backgroundElement.style.backgroundImage = `url("${backgroundJpg}")`;
+  currentHighDisplay.innerText = Math.round(weather.days[0].tempmax);
+  currentLowDisplay.innerText = Math.round(weather.days[0].tempmin);
+  sunriseDisplay.innerText = weather.days[0].sunrise.slice(0, 5);
+  sunsetDisplay.innerText = weather.days[0].sunset.slice(0, 5);
+
+  let dayIndex = new Date().getDay() + 1;
+  for (let i = 0; i < 7; i++) {
+    if (dayIndex >= 7) {
+      dayIndex = 0;
+    }
+    console.log(dayIndex);
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    dayDisplays[i].querySelector(".weekday").textContent = dayNames[dayIndex];
+    dayDisplays[i].querySelector(".high-temp").textContent = Math.round(
+      weather.days[i + 1].tempmax
+    );
+    dayDisplays[i].querySelector(".low-temp").textContent = Math.round(
+      weather.days[i + 1].tempmin
+    );
+    let svg = weather.days[i + 1].icon + ".svg";
+    dayDisplays[i].querySelector("img").src = svg;
+    dayIndex++;
   }
-  highTodayDisplay.innerText = `${weather.days[0].tempmax}` + "\u00B0" + "F";
-  lowTodayDisplay.innerText = `${weather.days[0].tempmin}` + "\u00B0" + "F";
-  sunriseTodayDisplay.innerText = `Sunrise ${weather.days[0].sunrise.slice(
-    0,
-    5
-  )}`;
-  sunsetTodayDisplay.innerText = `Sunset ${weather.days[0].sunset.slice(0, 5)}`;
 }
 
 searchForm.addEventListener("submit", (e) => {
@@ -77,9 +80,6 @@ searchForm.addEventListener("submit", (e) => {
   if (constraint.test(newCity)) {
     city = newCity;
     showWeather();
-  } else {
-    searchErrorDisplay.innertext = "Invalid characters";
-    return;
   }
 });
 
